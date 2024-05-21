@@ -12,9 +12,12 @@ $callback = function ( $job ) {
 
 $worker->addFunction( $function_name, $callback );
 $worker->setTimeout( 1000 );
+$jobReceived = false;
 while ( $worker->work() ) {
-	echo "THERE WAS A JOB\n";
-	exit;
+	$jobReceived = true;
 };
-echo "THERE WAS NO JOB\n";
-exit;
+if( $jobReceived) {
+	echo "There was a job. Test passed.\n";
+} else {
+	echo "There was no job. Test failed.\n";
+}
