@@ -12,7 +12,7 @@ $worker->addServer( $server_host, 4730 );
 $callback = function ( $job ) {
 	$workload = $job->workload();
 	echo "Got the job, but exiting with an non-zero error code\n";
-	exit( 255 );
+	exit( 1 );
 };
 
 $worker->addFunction( $function_name, $callback );
